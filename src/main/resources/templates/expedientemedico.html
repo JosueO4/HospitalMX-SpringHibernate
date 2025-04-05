@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Agrega el CSS personalizado aquí -->
+        <style>
+            /* Estilo para el título */
+            h1 {
+                font-size: 36px;
+                color: #333;
+                text-align: center;
+                margin-top: 20px;
+            }
+    
+            /* Estilo para la tabla */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+    
+            table, th, td {
+                border: 1px solid #ddd;
+            }
+    
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
+    
+            /* Estilo para la barra de búsqueda */
+            .form-inline {
+                margin-top: 20px;
+            }
+    
+            /* Estilo para los botones */
+            .btn {
+                background-color: #007BFF;
+                color: #fff;
+            }
+    
+            /* Estilo para las celdas de encabezado de la tabla */
+            th {
+                background-color: #007BFF;
+                color: #fff;
+            }
+    
+            /* Estilo para las filas alternas de la tabla */
+            tbody tr:nth-child(odd) {
+                background-color: #f2f2f2;
+            }
+    
+            /* Estilo para el botón Buscar */
+            .form-inline .btn-default {
+                background-color: #555;
+                color: #fff;
+            }
+    
+            /* Estilo para los enlaces de paginación (si los tienes) */
+            .pagination {
+                margin-top: 20px;
+            }
+    
+            .pagination a {
+                color: #007BFF;
+                background-color: transparent;
+                border: 1px solid #007BFF;
+                margin: 0 4px;
+                padding: 5px 10px;
+                text-decoration: none;
+                transition: background-color 0.3s, color 0.3s;
+            }
+    
+            .pagination a:hover {
+                background-color: #007BFF;
+                color: #fff;
+            }
+        </style>
+
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4"> <!-- Agregamos una columna de ancho 4 en dispositivos medianos y grandes -->
+            <form class="form-inline" action="/findexpedientemedicobyid" method="get" >
+                <div class="form-group">
+                    <input type="text" class="form-control" name="id" placeholder="ID">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <h1 class="text-center mt-4">Expedientes</h1> 
+    <a href="/addexpedientemedico" class="btn btn-success float-right mt-3">Agregar</a><!-- Agregamos una clase mt-4 para darle margen superior -->
+    <table class="table mt-3"> <!-- Agregamos una clase mt-3 para darle margen superior -->
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Paciente</th>
+            <th>Padecimiento</th>
+            <th>Medicamento</th>
+            <th>Procedimiento</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="expedienteMedico : ${expedienteMedicos}">
+            <td th:text="${expedienteMedico.id}"></td>
+            <td th:if="${expedienteMedico.fecha}" th:text="${expedienteMedico.fecha}"></td>
+            <td th:text="${expedienteMedico.paciente.cedula}"></td>
+            <td th:text="${expedienteMedico.padecimiento.nombre}"></td>
+            <td th:text="${expedienteMedico.medicamento.nombre}"></td>
+            <td th:text="${expedienteMedico.procedimiento.nombre}"></td>
+            <td><a th:href="@{/updateexpedientemedico/} + ${expedienteMedico.id }" class="btn btn-warning">Editar</a></td>
+            <td><a th:href="@{/deleteexpedientemedico/} + ${expedienteMedico.id }" class="btn btn-warning">Eliminar</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

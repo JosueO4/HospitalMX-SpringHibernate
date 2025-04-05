@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Detalles del Padecimiento</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa; /* Color de fondo para toda la página */
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin-top: 50px;
+        }
+
+        h3 {
+            color: #007BFF;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        p {
+            color: #000000;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>Detalles del Padecimiento</h3>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label>Nombre:</label>
+            </div>
+            <div class="col-md-10">
+                <p th:text="${padecimiento.nombre}"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label>Síntomas:</label>
+            </div>
+            <div class="col-md-10">
+                <p th:text="${padecimiento.sintomas}"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label>Descripción:</label>
+            </div>
+            <div class="col-md-10">
+                <p th:text="${padecimiento.descripcion}"></p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

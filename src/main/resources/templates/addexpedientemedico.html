@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Formulario de Cita</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa; /* Color de fondo para toda la página */
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="login-form">
+            <form th:action="@{/addexpedientemedico}" method="post">
+                <div class="form-group">
+                    <label>Fecha: <input type="text" name="fecha"></label>
+                </div>
+                <div class="form-group">
+                    <label>Padecimiento ID: <input type="text" name="padecimiento_id"></label>
+                </div>
+                <div class="form-group">
+                    <label>Medicamento ID: <input type="text" name="medicamento_id"></label>
+                </div>
+                <div class="form-group">
+                    <label>Procedimiento ID: <input type="text" name="procedimiento_id"></label>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Confirmar">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
